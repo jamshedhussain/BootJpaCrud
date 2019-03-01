@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+	
 
 	@Override
 	public boolean insert(User user) {
@@ -31,12 +32,13 @@ public class UserServiceImpl implements UserService {
 		return (ue.getuId() != null) ? true : false;
 
 	}// insertMethod
+	
 
 	@Override
 	public List<User> showAllUser() {
 		List<UserEntity> en = userDao.findAll();
 		List<User> users = new ArrayList<User>();
-
+		
 		if (!en.isEmpty()) {
 			for (UserEntity entity : en) {
 				User u = new User();
@@ -45,6 +47,7 @@ public class UserServiceImpl implements UserService {
 				u.setuAdd(entity.getuAdd());
 
 				users.add(u);
+				System.out.println(u);
 			}
 		} // if
 		return users;
